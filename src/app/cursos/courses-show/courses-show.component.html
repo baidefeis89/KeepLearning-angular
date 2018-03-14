@@ -1,0 +1,14 @@
+<div class="card-deck">
+  <div class="card mb-4" *ngFor="let course of courses">
+    <a [routerLink]="['/courses/details', course.id]">
+      <img class="card-img-top" [src]="course.image" alt="Card image cap">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{course.name}}</h5>
+      <p class="card-text">{{course.description}}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>

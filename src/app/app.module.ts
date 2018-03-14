@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { MenuModule } from './menu/menu.module';
+import { APP_ROUTING } from './app.routes';
 
 
 @NgModule({
@@ -10,7 +12,9 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MenuModule,
+    APP_ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
