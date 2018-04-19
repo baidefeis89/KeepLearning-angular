@@ -2,51 +2,33 @@ import { Injectable } from '@angular/core';
 import { Icourses } from '../interfaces/icourses';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/of";
+import "rxjs/add/operator/map";
+import * as constants from '../../constants';
+import { HttpClient } from "@angular/common/http";
+import { Iresponse } from '../../interfaces/iresponse';
 
 @Injectable()
 export class CoursesService {
-  private courses: Icourses[] = [
-    {
-      id: 1,
-      name: 'Curso 1',
-      image: 'image',
-      description: 'Descripción del curso'
-    },{
-      id: 2,
-      name: 'Curso 2',
-      image: 'image',
-      description: 'Descripción del curso'
-    },{
-      id: 3,
-      name: 'Curso 3',
-      image: 'image',
-      description: 'Descripción del curso'
-    },{
-      id: 4,
-      name: 'Curso 4',
-      image: 'image',
-      description: 'Descripción del curso'
-    },{
-      id: 5,
-      name: 'Curso 5',
-      image: 'image',
-      description: 'Descripción del curso'
-    },{
-      id: 6,
-      name: 'Curso 6',
-      image: 'image',
-      description: 'Descripción del curso'
-    },
-  ];
+  private courses: Icourses[];
 
-  constructor() { }
+  constructor( private http: HttpClient ) { }
 
   getCourses(): Observable<Icourses[]> {
-    return Observable.of(this.courses);
+    return this.http.get(`${constants.URL}cursos`).map(
+      (res : Iresponse) => {
+        if (res.ok) return res.result
+        return res.error
+      }
+    )
   }
 
   getCourse(index: number): Observable<Icourses> {
-    return Observable.of(this.courses[index-1])
+    return this.http.get(`${constants.URL}cursos/${index}`).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result
+        return res.error
+      }
+    )
   }
 
 }
