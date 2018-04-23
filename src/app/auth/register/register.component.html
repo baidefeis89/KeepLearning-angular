@@ -1,0 +1,55 @@
+<form (ngSubmit)="register()" novalidate>
+  <legend>Create an account</legend>
+
+  <div class="form-group">
+    <label for="nombre">Name:</label>
+    <input type="text" class="form-control" id="name" name="nameUser" placeholder="Name" [(ngModel)]="user.name" required 
+    #nameModel="ngModel" [ngClass]="validClasses(nameModel,'is-valid','is-invalid')" minlength="3">
+  </div>
+  
+  <div class="form-group">
+    <label for="apellidos">Surname:</label>
+    <input type="text" class="form-control" id="apellidos" name="surname" placeholder="Surname" [(ngModel)]="user.surname" required 
+    #nameModel="ngModel" [ngClass]="validClasses(nameModel,'is-valid','is-invalid')" minlength="3">
+  </div>
+
+  <div class="form-group">
+    <label for="correo">Email:</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="user.email" required 
+    #emailModel="ngModel" [ngClass]="validClasses(emailModel,'is-valid','is-invalid')" email>
+  </div>
+
+  <div class="form-group">
+    <label for="correo">Repeat Email:</label>
+    <input type="email" class="form-control" id="email2" name="email2" placeholder="Email" [(ngModel)]="user.email2" required 
+    #email2Model="ngModel" [ngClass]="validClasses(email2Model,'is-valid','is-invalid')" email>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password" required 
+    #passwordModel="ngModel" [ngClass]="validClasses(passwordModel,'is-valid','is-invalid')">
+  </div>
+  
+  <div class="form-group">
+    <label for="password2">Repeat Password:</label>
+    <input type="password" class="form-control" id="password2" name="password2" placeholder="Password" [(ngModel)]="user.password2" required 
+    #passwordModel="ngModel" [ngClass]="validClasses(passwordModel,'is-valid','is-invalid')">
+  </div>
+  
+  <a class="btn btn-secondary" [routerLink]="['/auth/login']">Go back</a>
+  <button type="submit" class="btn btn-primary">Create account</button>
+</form>
+
+<!-- <button class="btn btn-facebook mt-3" aeFbLogin [scopes]="['email', 'public_profile']"
+(loginOk)="loggedFacebook($event)" (loginError)="showError($event)">
+Register with Facebook
+</button>
+
+<button class="btn btn-google mt-1" aeGoogleLogin (loginOk)="loggedGoogle($event)" (loginError)="showError($event)">
+  Register with Google
+</button> -->
+
+<div *ngIf="error" class="alert alert-danger mt-3" role="alert">
+  {{error}}
+</div>

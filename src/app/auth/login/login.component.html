@@ -1,0 +1,30 @@
+<form (ngSubmit)="login()">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email"
+       aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1"
+       placeholder="Password" [(ngModel)]="password" name="password">
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+      Email or password incorrect.
+    </div>
+    <a [routerLink]="['/auth/register']" class="btn btn-secondary">Register</a>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  
+  <!-- <button class="btn btn-facebook mt-3" aeFbLogin [scopes]="['email', 'public_profile']"
+  (loginOk)="loggedFacebook($event)" (loginError)="showError($event)">
+  Login with Facebook
+  </button>
+  
+  <button class="btn btn-google mt-1" aeGoogleLogin (loginOk)="loggedGoogle($event)" (loginError)="showError($event)">
+    Login with Google
+  </button> -->
+  
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+    {{errorMessage}}
+  </div>
