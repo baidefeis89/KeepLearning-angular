@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { MenuModule } from './menu/menu.module';
 import { APP_ROUTING } from './app.routes';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { AuthService } from './services/auth.service';
+import { LoginActivateGuard } from './guards/login-activate-guard.service';
+import { LogoutActivateGuard } from './guards/logout-activate-guard.service';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { TokenInterceptorService } from './token-interceptor.service';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    AuthService,
+    LoginActivateGuard,
+    LogoutActivateGuard
   ],
   bootstrap: [AppComponent]
 })

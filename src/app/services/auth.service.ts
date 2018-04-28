@@ -38,4 +38,13 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
+  isLogged() {
+    if (!localStorage.getItem('token')) return Observable.of(false);
+    return this.http.get<{ok: boolean}>(`${constants.URL}auth/token`).map(
+      res => res.ok
+    ).catch(
+      err => Observable.of(false)
+    )
+  }
+
 }

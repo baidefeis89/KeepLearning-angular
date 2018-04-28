@@ -16,14 +16,7 @@ export class CourseDetailsComponent implements OnInit {
                 private router:Router ) { }
 
   ngOnInit() {
-    //this.course = this.activatedRoute.snapshot.data['event'];
-    this.courseService.getCourse(this.activatedRoute.snapshot.data['event']._id).subscribe(
-      res => {
-        this.course = res
-      
-        console.log(this.course);
-      }
-    )
+    this.course = this.activatedRoute.snapshot.data['event'];
   }
 
   showApartados(id: number) {

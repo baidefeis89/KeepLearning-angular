@@ -11,19 +11,11 @@ export class VideoShowComponent implements OnInit {
   paragraph: any;
   video: string = null;
 
-  constructor( private activatedRoute: ActivatedRoute, 
-    private coursesService: CoursesService ) { }
+  constructor( private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.coursesService.getParagraph(params['idParagraph']).subscribe(
-        res => {
-          this.paragraph = res;
-          this.video = res.video
-          console.log(this.paragraph);
-        }
-      )
-   });
+    this.paragraph = this.activatedRoute.snapshot.data['paragraph'];
+    this.video = this.paragraph.video;
   }
 
 }

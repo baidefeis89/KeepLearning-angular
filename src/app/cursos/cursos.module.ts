@@ -6,6 +6,8 @@ import { COURSES_ROUTING } from './cursos.routes';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CourseResolverService } from './services/course-resolver.service';
 import { VideoShowComponent } from './video-show/video-show.component';
+import { ParagraphResolverService } from './services/paragraph-resolver.service';
+import { VideoComponent } from './videocamera/video.component';
 
 @NgModule({
   imports: [
@@ -15,8 +17,9 @@ import { VideoShowComponent } from './video-show/video-show.component';
   declarations: [
     CoursesShowComponent, 
     CourseDetailsComponent, 
-    VideoShowComponent
+    VideoShowComponent,
+    VideoComponent
   ],
-  providers: [CoursesService, CourseResolverService]
+  providers: [CoursesService, CourseResolverService, ParagraphResolverService]
 })
 export class CursosModule { }
