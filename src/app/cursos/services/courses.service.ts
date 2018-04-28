@@ -31,4 +31,13 @@ export class CoursesService {
     )
   }
 
+  getParagraph(index: string): Observable<any> {
+    return this.http.get(`${constants.URL}apartados/${index}`).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result
+        return res.error
+      }
+    )
+  }
+
 }

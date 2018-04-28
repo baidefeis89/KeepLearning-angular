@@ -1,8 +1,7 @@
 <div class="card-deck">
-  <pre>{{ courses | json }}</pre>
   <div class="card mb-4" *ngFor="let course of courses">
     <a [routerLink]="['/courses/details', course._id]">
-      <img class="card-img-top" [src]="course.image" alt="Card image cap">
+      <img class="card-img-top" [src]="'http://localhost:8080/img/' + course.image" alt="Card image cap">
     </a>
     <div class="card-body">
       <h5 class="card-title">{{course.title}}</h5>

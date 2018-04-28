@@ -1,0 +1,18 @@
+
+<h1>{{ paragraph.title }}</h1>
+<div class="row">
+  <div class="col-md-6" *ngIf="video">
+    <video controls controlsList="nodownload" oncontextmenu="return false;">
+      <source [src]="'http://localhost:8080/uploads/' + video" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="col-md-6" *ngIf="paragraph">
+    <div class="container" *ngFor="let message of paragraph.messages">
+      <h3>{{ message.subject }}</h3>
+      <div>{{ message.text }}</div>
+      <div *ngFor="let response of message.responses">{{ response.text }}</div>
+    </div>
+    {{ paragraph | json }}
+  </div>
+</div>

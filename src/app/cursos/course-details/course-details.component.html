@@ -26,7 +26,9 @@
         <div class="card-body">
           {{ tema.description }}
         </div>
-        <a *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action" id="list-{{apartado.title}}-list" data-toggle="list" href="#list-{{apartado.title}}" role="tab">{{apartado.title}}</a>
+        <a *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action" 
+          id="list-{{apartado.title}}-list" data-toggle="list" role="tab" 
+          [routerLink]="['paragraph/', apartado._id]">{{apartado.title}}</a>
       </div>
     </div>
     
