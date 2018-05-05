@@ -25,8 +25,8 @@ export class CoursesService {
   getCourse(index: number): Observable<Icourses> {
     return this.http.get(`${constants.URL}cursos/${index}`).map(
       (res: Iresponse) => {
-        if (res.ok) return res.result
-        return res.error
+        if (res.ok) return res.result;
+        return res.error;
       }
     )
   }
@@ -34,8 +34,27 @@ export class CoursesService {
   getParagraph(index: string): Observable<any> {
     return this.http.get(`${constants.URL}apartados/${index}`).map(
       (res: Iresponse) => {
-        if (res.ok) return res.result
-        return res.error
+        if (res.ok) return res.result;
+        return res.error;
+      }
+    )
+  }
+
+  postNewMessage(idParagraph: string, message: any): Observable<any> {
+    return this.http.post(`${constants.URL}mensajes/nuevo/${idParagraph}`,message).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result;
+        return res.error;
+      }
+    )
+  }
+
+  responseMessage(idMessage: string, response: string): Observable<any> {
+    console.log('id',idMessage,'text',response);
+    return this.http.post(`${constants.URL}mensajes/respuestas/${idMessage}`, {text: response}).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result;
+        return res.error;
       }
     )
   }

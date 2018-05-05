@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../services/courses.service';
 
@@ -8,14 +8,11 @@ import { CoursesService } from '../services/courses.service';
   styleUrls: ['./video-show.component.css']
 })
 export class VideoShowComponent implements OnInit {
-  paragraph: any;
-  video: string = null;
+  @Input() video;
 
-  constructor( private activatedRoute: ActivatedRoute ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.paragraph = this.activatedRoute.snapshot.data['paragraph'];
-    this.video = this.paragraph.video;
   }
 
 }

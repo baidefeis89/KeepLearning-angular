@@ -6,6 +6,7 @@ import { CourseResolverService } from "./services/course-resolver.service";
 import { VideoShowComponent } from "./video-show/video-show.component";
 import { LoginActivateGuard } from "../guards/login-activate-guard.service";
 import { ParagraphResolverService } from "./services/paragraph-resolver.service";
+import { ParagraphComponent } from "./paragraph/paragraph.component";
 
 const COURSES_ROUTES: Routes = [  
     {
@@ -21,7 +22,7 @@ const COURSES_ROUTES: Routes = [
     },{
         path: 'details/:id/paragraph/:idParagraph',
         canActivate: [LoginActivateGuard],
-        component: VideoShowComponent,
+        component: ParagraphComponent,
         resolve: {
             paragraph: ParagraphResolverService
         }

@@ -1,0 +1,15 @@
+.profile-img {
+    width: 50px;
+}
+
+.profile-img-sm {
+    width: 25px;
+}
+
+.profile-img img, .profile-img-sm img {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+}

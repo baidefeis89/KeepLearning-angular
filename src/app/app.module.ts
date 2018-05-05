@@ -9,11 +9,13 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthService } from './services/auth.service';
 import { LoginActivateGuard } from './guards/login-activate-guard.service';
 import { LogoutActivateGuard } from './guards/logout-activate-guard.service';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

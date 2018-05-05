@@ -1,5 +1,5 @@
 export interface Icourses {
-    id: string,
+    _id: string,
     title: string,
     creator: any,
     description: string,
@@ -7,7 +7,7 @@ export interface Icourses {
 }
 
 export interface Itopic {
-    id: string,
+    _id: string,
     title: string,
     description: string,
     paragraphs: string,
@@ -15,14 +15,14 @@ export interface Itopic {
 }
 
 export interface Iparagraph {
-    id: string,
+    _id: string,
     title: string,
     video: string,
     messages: Imessage[]
 }
 
 export interface Imessage {
-    id: string,
+    _id: string,
     subject: string,
     text: string,
     creator: any,

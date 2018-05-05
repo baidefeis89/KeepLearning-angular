@@ -1,0 +1,72 @@
+<div class="container mt-4">
+
+  <h1>{{ paragraph.title }}</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <app-video-show [video]="paragraph.video"></app-video-show>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5  align-self-end" *ngIf="paragraph">
+      <button class="btn btn-primary mb-3" (click)="showHideCreateMessage()">Nuevo mensaje</button>
+      
+      <div class="row" *ngIf="createMessage">
+        <label for="subject">Asunto</label>
+        <input type="text" class="form-control" [(ngModel)]="newMessage.subject">
+        <label for="text">Texto</label>
+        <textarea class="col-md-12 form-control" name="text" id="text" cols="30" rows="4" [(ngModel)]="newMessage.text"></textarea>
+        <button class="btn btn-primary mt-3 mb-4" (click)="sendNewMessage()">Enviar</button>
+      </div> 
+      {{newMessage | json}}
+      
+      <div class="container mb-4" *ngFor="let message of paragraph.messages">
+        <app-message [message]="message"></app-message>
+      </div>
+    </div>
+  </div>
+</div>
+            <!-- <div class="row header">
+              <div class="col-md-2">
+                <figure class="profile-img">
+                  <img [src]="'http://localhost:8080/img/' + message.creator.avatar" alt="profile">
+                </figure>
+              </div>
+              <div class="col-md-10">
+                <div class="font-weight-bold">
+                  <h4>{{ message.subject }}</h4>
+                  <h6>
+                    <a href="">{{ message.creator.name + ' ' + message.creator.surname }} </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="body">{{ message.text }}</div>
+            <div class="pointer text-primary">
+              <small>Responder</small> 
+            </div>
+      
+            <div class="row mt-2">
+              <div *ngFor="let response of message.responses" class="row mt-2">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                  <div class="row header align-items-center">
+                    <div class="col-md-2">
+                      <figure class="profile-img">
+                        <img [src]="'http://localhost:8080/img/' + response.creator.avatar" alt="profile">
+                      </figure>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="font-weight-bold">
+                        <h6>
+                          <a href="">{{ response.creator.name + ' ' + response.creator.surname }} </a>
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="body">
+                    {{ response.text }}
+                  </div>
+      
+                </div>
+      
+            </div> -->
