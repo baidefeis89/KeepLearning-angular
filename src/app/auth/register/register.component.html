@@ -1,3 +1,4 @@
+<div class="container">
 <form (ngSubmit)="register()" novalidate>
   <legend>Create an account</legend>
 
@@ -37,7 +38,7 @@
     #passwordModel="ngModel" [ngClass]="validClasses(passwordModel,'is-valid','is-invalid')">
   </div>
   
-  <a class="btn btn-secondary" [routerLink]="['/auth/login']">Go back</a>
+  <a class="btn btn-secondary" [routerLink]="['/auth']">Login</a>
   <button type="submit" class="btn btn-primary">Create account</button>
 </form>
 
@@ -52,4 +53,5 @@ Register with Facebook
 
 <div *ngIf="error" class="alert alert-danger mt-3" role="alert">
   {{error}}
+</div>
 </div>

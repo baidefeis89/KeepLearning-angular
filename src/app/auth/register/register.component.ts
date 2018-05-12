@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.auth.register(this.user).subscribe( response => {
-      if (response) this.router.navigate(['/events']);
+      if (response) this.router.navigate(['/courses']);
     }, error => {
       this.error = error;
     });

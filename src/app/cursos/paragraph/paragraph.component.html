@@ -16,7 +16,6 @@
         <textarea class="col-md-12 form-control" name="text" id="text" cols="30" rows="4" [(ngModel)]="newMessage.text"></textarea>
         <button class="btn btn-primary mt-3 mb-4" (click)="sendNewMessage()">Enviar</button>
       </div> 
-      {{newMessage | json}}
       
       <div class="container mb-4" *ngFor="let message of paragraph.messages">
         <app-message [message]="message"></app-message>

@@ -27,10 +27,10 @@ export class MessageComponent implements OnInit {
   sendResponse(id: string, response: any) {
     this.courseService.responseMessage(id, response.value).subscribe(
       res => {
-        console.log(res);
         this.message.responses.push(res);
         response.value = '';
         this.showNewResponse = false;
+        this.showResponses = true;
       }
     )
   }

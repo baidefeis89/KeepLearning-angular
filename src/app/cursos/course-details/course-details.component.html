@@ -53,10 +53,10 @@
       <div class="col-md-8">
         <div class="chat bg-white pb-5 pt-4" #chat>
           <div class="row" *ngFor="let msg of messages">
-            <div class="col-md-6">
+            <div class="col-6">
               <p *ngIf="!msg.mine" class="ml-2 bg-primary p-2">{{msg.msg}}</p>
             </div>
-            <div class="col-md-6 text-right">
+            <div class="col-6 text-right">
               <p *ngIf="msg.mine" class="mr-2 bg-secondary p-2">{{msg.msg}}</p>
             </div>
           </div>

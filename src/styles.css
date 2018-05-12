@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+You can add global styles to this file, and also import other style files
 .pointer {
     cursor: pointer;
 }
@@ -289,7 +289,7 @@ header.masthead p {
   color: #F05F40 !important;
 }
 
-.btn {
+.btn-radius {
   font-weight: 700;
   text-transform: uppercase;
   border: none;
@@ -309,6 +309,11 @@ header.masthead p {
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   color: #fff;
   background-color: #ee4b28 !important;
+}
+
+.btn-primary:disabled {
+  background-color: #F05F40;
+  cursor: not-allowed;
 }
 
 .btn-primary:active, .btn-primary:focus {

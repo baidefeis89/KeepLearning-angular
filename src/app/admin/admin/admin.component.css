@@ -1,0 +1,8 @@
+.side-menu {
+    height: 90vh;
+}
+
+.info {
+    overflow-y: scroll;
+    height: 90vh;
+}

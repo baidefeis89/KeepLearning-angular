@@ -10,7 +10,9 @@ import { AuthService } from './services/auth.service';
 import { LoginActivateGuard } from './guards/login-activate-guard.service';
 import { LogoutActivateGuard } from './guards/logout-activate-guard.service';
 import { MainComponent } from './main/main.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoursesService } from './cursos/services/courses.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MainComponent } from './main/main.component';
     BrowserModule,
     MenuModule,
     APP_ROUTING,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     {
@@ -31,7 +35,8 @@ import { MainComponent } from './main/main.component';
     },
     AuthService,
     LoginActivateGuard,
-    LogoutActivateGuard
+    LogoutActivateGuard,
+    CoursesService
   ],
   bootstrap: [AppComponent]
 })

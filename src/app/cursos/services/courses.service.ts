@@ -6,7 +6,7 @@ import "rxjs/add/operator/map";
 import * as constants from '../../constants';
 import { HttpClient } from "@angular/common/http";
 import { Iresponse } from '../../interfaces/iresponse';
-
+//response.result.avatar = `${this.urlServer}img/users/${response.result.avatar}`;
 @Injectable()
 export class CoursesService {
   private courses: Icourses[];

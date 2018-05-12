@@ -1,0 +1,23 @@
+<a class="btn btn-primary" [routerLink]="['/admin/courses/create']">Crear curso</a>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ course.title }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+          <span class="pointer text-primary" (click)="editCourse()"><i class="fas fa-edit"></i></span>
+          <span class="pointer text-primary" (click)="removeCourse()"><i class="fas fa-trash"></i></span>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,25 @@
+
+<!-- <ngx-charts-bar-vertical
+[view]="view" [results]="data" [gradient]="true"
+[xAxis]="true" [yAxis]="true" [legend]="legend" [showXAxisLabel]="true" [showYAxisLabel]="true"
+xAxisLabel="Cursos" yAxisLabel="Visualizaciones" (select)="onSelect($event)">
+  </ngx-charts-bar-vertical> -->
+<div class="row">
+  <div class="col-md-12">
+    <h3>Actividad de los cursos</h3>
+    <ngx-charts-pie-grid [view]="view" [results]="coursesViews" [label]="'visualizaciones'">
+    </ngx-charts-pie-grid>
+  </div>
+
+  <div class="col-md-12 mb-5" *ngFor="let course of coursesStatistics; let i = index">
+    <h3>{{course.title}}</h3>
+      <ngx-charts-bar-vertical
+      [view]="view" [results]="course.data" [gradient]="false"
+      [xAxis]="true" [yAxis]="true" [legend]="legend" [showXAxisLabel]="true" [showYAxisLabel]="true"
+      xAxisLabel="Apartados" yAxisLabel="Visualizaciones">
+      </ngx-charts-bar-vertical>
+      
+  </div>
+
+</div>
+

@@ -2,3 +2,7 @@
     height: 400px;
     overflow-y: scroll;
 }
+
+.msg {
+    white-space: pre-line;
+}

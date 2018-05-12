@@ -1,4 +1,6 @@
+<div class="container">
 <form (ngSubmit)="login()">
+    <legend>Login</legend>
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email" class="form-control" id="email" name="email"
@@ -28,3 +30,4 @@
   <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
     {{errorMessage}}
   </div>
+</div>
