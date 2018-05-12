@@ -2,7 +2,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AdminComponent } from "./admin/admin.component";
 import { ResumeComponent } from "./resume/resume.component";
 import { AdminCoursesComponent } from "./admin-courses/admin-courses.component";
-import { CreateCourseComponent } from "./create-course/create-course.component";
+import { FormCourseComponent } from "./form-course/form-course.component";
 
 
 const ADMIN_ROUTES: Routes = [  
@@ -12,7 +12,7 @@ const ADMIN_ROUTES: Routes = [
         children: [
             { path: 'resume', component: ResumeComponent },
             { path: 'courses', component: AdminCoursesComponent },
-            { path: 'courses/create', component: CreateCourseComponent }
+            { path: 'courses/create', component: FormCourseComponent }
         ]
     }
 ];

@@ -7,15 +7,15 @@ export interface Icourses {
 }
 
 export interface Itopic {
-    _id: string,
+    _id?: string,
     title: string,
     description: string,
     paragraphs: Iparagraph[],
-    messages: Imessage[]
+    messages?: Imessage[]
 }
 
 export interface Iparagraph {
-    _id: string,
+    _id?: string,
     title: string,
     video: string,
     messages: Imessage[],
@@ -23,7 +23,7 @@ export interface Iparagraph {
 }
 
 export interface Imessage {
-    _id: string,
+    _id?: string,
     subject: string,
     text: string,
     creator: any,

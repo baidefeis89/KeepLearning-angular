@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>Crear nuevo tema</h4>
+    <form class="form-controller" novalidate #courseForm="ngForm">
+      <div class="form-group">
+        <label for="title">Titulo</label>
+        <input type="text" class="form-control" required id="title" [(ngModel)]="newTopic.title" name="title" #title="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea name="description" id="description" [(ngModel)]="newTopic.description" rows="3" class="form-control" required #description="ngModel"></textarea>
+      </div>
+    
+      <div class="form-group">
+        <button class="btn btn-primary" [disabled]="courseForm.invalid" (click)="createTopic()">Crear</button>
+      </div>
+    </form>
+      
+  </div>
+
+
+
+  <div class="col-md-6" id="accordion">
+          <h2 class="text-white"><strong>Temas</strong></h2>
+        <div *ngFor="let tema of topics">
+    
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link">
+                  {{ tema.title }}
+                </button>
+              </h5>
+            </div>
+            
+            <div id="{{tema.title}}">
+              <div class="card-body">
+                {{ tema.description }}
+              </div>
+              <div class="card-body">
+                Apartados
+                <button class="btn btn-primary" (click)="showModal(tema._id)">Crear apartados</button>          
+                <div *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action" 
+                id="list-{{apartado.title}}-list"
+                [routerLink]="['paragraph/', apartado.title]">{{apartado.title}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+   
+  </div>
+</div>
+<div>
+  <button class="btn btn-secondary">Anterior</button>
+  <button class="btn btn-primary">Siguiente</button>
+</div>
