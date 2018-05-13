@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Icourses, Itopic } from '../../cursos/interfaces/icourses';
 import { AdminService } from '../admin.service';
+import { ActivatedRoute } from '@angular/router';
+import { CoursesService } from '../../cursos/services/courses.service';
 
 @Component({
   selector: 'app-form-course',
@@ -13,34 +15,27 @@ export class FormCourseComponent implements OnInit {
   errorMsg: string;
   index: number = 0;
   
-  constructor( private adminService: AdminService ) { }
+  constructor( private adminService: AdminService, private activatedRoute: ActivatedRoute, private courseService: CoursesService ) { }
 
   ngOnInit() {
     this.course = {
       title: 'New course',
       description: 'Description',
-      topics: []
+      topics: [],
+      image: ''
     };
 
-    this.adminService.createCourse(this.course).subscribe(
-      res => this.course = res,
-      err => this.errorMsg = 'Error al crear el curso'
-    );
-    
-    // this.course = {
-    //   title: '',
-    //   description: '',
-    //   topics: [{
-    //     title: 'Tema de prueba',
-    //     description: 'Descripcion del tema de prueba',
-    //     paragraphs: [{
-    //       title: 'Apartado 1',
-    //       video: '',
-    //       messages: [],
-    //       visits: 0
-    //     }]
-    //   }]
-    // }
+    if (this.activatedRoute.snapshot.params['id']) {
+      this.courseService.getCourse(this.activatedRoute.snapshot.params['id']).subscribe(
+        res => this.course = res,
+        err => this.errorMsg = 'Error al acceder al curso'
+      )
+    } else {
+      this.adminService.createCourse(this.course).subscribe(
+        res => this.course = res,
+        err => this.errorMsg = 'Error al crear el curso'
+      );
+    }
     
     this.topic = {
       title: '',
@@ -50,10 +45,6 @@ export class FormCourseComponent implements OnInit {
   }
 
   nextSection() {
-    this.adminService.updateCourse(this.course).subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    )
     this.index++;
   }
 

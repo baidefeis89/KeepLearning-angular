@@ -3,6 +3,7 @@ import { CoursesService } from '../../cursos/services/courses.service';
 import { Icourses } from '../../cursos/interfaces/icourses';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.component';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-admin-courses',
@@ -12,7 +13,7 @@ import { ConfirmModalComponent } from '../../shared/confirm-modal/confirm-modal.
 export class AdminCoursesComponent implements OnInit {
   courses: Icourses[];
 
-  constructor( private courseService: CoursesService, private modal: NgbModal ) { }
+  constructor( private courseService: CoursesService, private modal: NgbModal, private adminService: AdminService ) { }
 
   ngOnInit() {
     this.courseService.getCourses().subscribe( res => 
@@ -24,9 +25,13 @@ export class AdminCoursesComponent implements OnInit {
     console.log('asf'); 
   }
 
-  removeCourse() {
+  removeCourse(idCourse: string) {
     this.showModal('Eliminar','¿Desea eliminar el curso definitivamente?',false).then(
-      res => console.log(res),
+      response => {
+        this.adminService.removeCourse(idCourse).subscribe(
+          res => {console.log(res);this.courses = this.courses.filter( c => c._id != idCourse)}
+        )
+      },
       err => console.log(err)
     )
     

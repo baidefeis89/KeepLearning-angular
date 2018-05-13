@@ -12,7 +12,8 @@ const ADMIN_ROUTES: Routes = [
         children: [
             { path: 'resume', component: ResumeComponent },
             { path: 'courses', component: AdminCoursesComponent },
-            { path: 'courses/create', component: FormCourseComponent }
+            { path: 'courses/create', component: FormCourseComponent },
+            { path: 'courses/update/:id', component: FormCourseComponent }
         ]
     }
 ];

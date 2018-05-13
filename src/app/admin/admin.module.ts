@@ -8,7 +8,7 @@ import { AdminCoursesComponent } from './admin-courses/admin-courses.component';
 import { AdminService } from './admin.service';
 import { SharedModule } from '../shared/shared.module';
 import { CreateCourseComponent } from './form-course/create-course/create-course.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateTopicsComponent } from './form-course/create-topics/create-topics.component';
 import { FormCourseComponent } from './form-course/form-course.component';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
@@ -17,6 +17,7 @@ import { UploadModalComponent } from './upload-modal/upload-modal.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ADMIN_ROUTING,
     NgxChartsModule,
     SharedModule

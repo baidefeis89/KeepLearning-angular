@@ -40,10 +40,10 @@
               </div>
               <div class="card-body">
                 Apartados
-                <button class="btn btn-primary" (click)="showModal(tema._id)">Crear apartados</button>          
-                <div *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action" 
-                id="list-{{apartado.title}}-list"
-                [routerLink]="['paragraph/', apartado.title]">{{apartado.title}}</div>
+                <button class="btn btn-primary" (click)="createParagraph(tema._id)">Crear apartados</button>          
+                <div *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action row" 
+                id="list-{{apartado.title}}-list">
+                <span class="col-md-1 text-danger pointer" (click)="deleteParagraph(tema._id, apartado)"><i class="fas fa-trash"></i></span><span class="col-md-11">{{apartado.title}}</span></div>
               </div>
             </div>
           </div>
@@ -52,6 +52,5 @@
   </div>
 </div>
 <div>
-  <button class="btn btn-secondary">Anterior</button>
-  <button class="btn btn-primary">Siguiente</button>
+  <a class="btn btn-primary" [routerLink]="['/admin/courses']">Finalizar</a>
 </div>

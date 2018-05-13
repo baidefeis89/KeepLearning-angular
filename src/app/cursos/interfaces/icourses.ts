@@ -3,7 +3,8 @@ export interface Icourses {
     title: string,
     creator?: any,
     description: string,
-    topics?: Itopic[]
+    topics?: Itopic[],
+    image?: string
 }
 
 export interface Itopic {
@@ -18,8 +19,8 @@ export interface Iparagraph {
     _id?: string,
     title: string,
     video: string,
-    messages: Imessage[],
-    visits: number
+    messages?: Imessage[],
+    visits?: number
 }
 
 export interface Imessage {

@@ -54,4 +54,22 @@ export class AdminService {
       }
     )
   }
+
+  removeCourse(idCourse: string): Observable<boolean> {
+    return this.http.delete(`${constants.URL}admin/course/${idCourse}`).map(
+      (res: Iresponse) => {
+        if (res.ok) return true;
+        else throw res.error;
+      }
+    )
+  }
+
+  removeParagraph(idParagraph: string): Observable<boolean> {
+    return this.http.delete(`${constants.URL}admin/paragraph/${idParagraph}`).map(
+      (res: Iresponse) => {
+        if (res.ok) return true;
+        else throw res.error;
+      }
+    )
+  }
 }

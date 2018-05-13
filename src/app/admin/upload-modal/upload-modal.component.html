@@ -5,16 +5,18 @@
   </button>
 </div>
 <div class="modal-body"> 
-  <form #formularioVideo="ngForm" novalidate enctype="multipart/form-data" (ngSubmit)="uploadVideo(formularioVideo.value)">
+  <form  novalidate enctype="multipart/form-data" (ngSubmit)="onSubmit()" [formGroup]="formularioVideo">
     <div class="form-group">
       <label for="title">Titulo</label>
-      <input type="text" class="form-control" name="title" id="title" required ngModel>
+      <input type="text" class="form-control" name="title" id="title" required formControlName="title">
     </div>
     <div class="form-group">
       <label for="video">Video</label>
-      <input type="file" class="form-control" name="video" id="video" required ngModel accept="video/mp4,video/x-m4v,video/*">
+      <!-- <input type="file" class="form-control" name="video" id="video" required ngModel accept="video/mp4,video/x-m4v,video/*"> -->
+      <input type="file" class="form-control" name="video" id="video" required (change)="onFileChange($event)" accept="video/mp4,video/x-m4v,video/*" #fileInput>
     </div>
-    <button type="submit" class="btn btn-block btn-primary" [disabled]="formularioVideo.invalid">Guardar</button>
+    <button type="submit" class="btn btn-block btn-primary" [disabled]="formularioVideo.invalid || fileInput.files.length < 1" *ngIf="!loading">Guardar</button>
+    <button type="submit" class="btn btn-block btn-primary" [disabled]="true" *ngIf="loading">Guardar <i class="fas fa-spinner fa-pulse"></i></button>
   </form>
 </div>
 <div class="modal-footer">

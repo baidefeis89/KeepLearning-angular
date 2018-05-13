@@ -1,4 +1,4 @@
-<a class="btn btn-primary" [routerLink]="['/admin/courses/create']">Crear curso</a>
+<button class="btn btn-primary" [routerLink]="['/admin/courses/create']">Crear curso</button>
 <table class="table table-striped">
     <thead>
       <tr>
@@ -14,8 +14,8 @@
         <td>{{ course.title }}</td>
         <td>{{ course.description }}</td>
         <td>
-          <span class="pointer text-primary" (click)="editCourse()"><i class="fas fa-edit"></i></span>
-          <span class="pointer text-primary" (click)="removeCourse()"><i class="fas fa-trash"></i></span>
+          <a [routerLink]="['update/', course._id]"><i class="fas fa-edit"></i></a>
+          <span class="pointer text-primary" (click)="removeCourse(course._id)"><i class="fas fa-trash"></i></span>
           
         </td>
       </tr>

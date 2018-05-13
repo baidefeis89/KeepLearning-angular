@@ -25,6 +25,7 @@ export class CoursesService {
   getCourse(index: number): Observable<Icourses> {
     return this.http.get(`${constants.URL}cursos/${index}`).map(
       (res: Iresponse) => {
+        console.log(res);
         if (res.ok) return res.result;
         return res.error;
       }
