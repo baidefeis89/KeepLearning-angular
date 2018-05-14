@@ -21,34 +21,8 @@
 
 
 
-  <div class="col-md-6" id="accordion">
-          <h2 class="text-white"><strong>Temas</strong></h2>
-        <div *ngFor="let tema of topics">
-    
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link">
-                  {{ tema.title }}
-                </button>
-              </h5>
-            </div>
-            
-            <div id="{{tema.title}}">
-              <div class="card-body">
-                {{ tema.description }}
-              </div>
-              <div class="card-body">
-                Apartados
-                <button class="btn btn-primary" (click)="createParagraph(tema._id)">Crear apartados</button>          
-                <div *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action row" 
-                id="list-{{apartado.title}}-list">
-                <span class="col-md-1 text-danger pointer" (click)="deleteParagraph(tema._id, apartado)"><i class="fas fa-trash"></i></span><span class="col-md-11">{{apartado.title}}</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-   
+  <div class="col-md-6" id="accordion" [dragula]='"main-bag"' [dragulaModel]="course.topics">   
+    <app-render-topic-edit *ngFor="let tema of course.topics" [tema]="tema" (delete)="deleteTopic($event)"></app-render-topic-edit>
   </div>
 </div>
 <div>

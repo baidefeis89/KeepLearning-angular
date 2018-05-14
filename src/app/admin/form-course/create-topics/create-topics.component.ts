@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Itopic, Iparagraph } from '../../../cursos/interfaces/icourses';
+import { Itopic, Iparagraph, Icourses } from '../../../cursos/interfaces/icourses';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadModalComponent } from '../../upload-modal/upload-modal.component';
 import { AdminService } from '../../admin.service';
 import { ConfirmModalComponent } from '../../../shared/confirm-modal/confirm-modal.component';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-create-topics',
@@ -11,16 +12,37 @@ import { ConfirmModalComponent } from '../../../shared/confirm-modal/confirm-mod
   styleUrls: ['./create-topics.component.css']
 })
 export class CreateTopicsComponent implements OnInit {
-  @Input() topics: Itopic[];
+  @Input() course: Icourses;
   @Input() topic: Itopic[];
   @Output() saveTopic: EventEmitter<Itopic> = new EventEmitter<Itopic>();
+  @Output() reorder: EventEmitter<void> = new EventEmitter<void>();
   newTopic: Itopic;
   errorMsg: string;
 
-  constructor( private modal: NgbModal, private adminService: AdminService ) { }
+  constructor( private modal: NgbModal, private adminService: AdminService, private dragulaService: DragulaService ) { }
 
   ngOnInit() {
     this._resetTopic();
+    this.dragulaService.drop.subscribe(
+      value => this.onDrop()
+    )
+    try {
+      this.dragulaService.setOptions('main-bag', {
+        moves: function (el, container, handle) {
+          return handle.className === 'handle';
+        }
+      });
+    } catch (e) {
+      console.log('main-bag already exist')
+    }
+  }
+
+  onDrop() {
+    console.log(this.course.topics.map( t => t._id));
+    this.adminService.reorderCourse(this.course).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
   }
 
   createTopic() {
@@ -31,7 +53,7 @@ export class CreateTopicsComponent implements OnInit {
   createParagraph(idTopic: string) {
     this.showModal({body: idTopic, upload: true, title: 'Añadir apartado'}).then( res => {
       if (res)
-        this.topics
+        this.course.topics
           .filter( t => t._id == idTopic)
           .map( t => t.paragraphs.push(res))
     })
@@ -41,7 +63,18 @@ export class CreateTopicsComponent implements OnInit {
     this.showModal({title: 'Eliminar', body: '¿Desea eliminar el apartado definitivamente?'}).then( res => {
       if (res) {
         this.adminService.removeParagraph(apartado._id).subscribe(
-          res => this.topics.filter( t => t._id == idTopic).map( t => t.paragraphs = t.paragraphs.filter ( p => p._id != apartado._id)),
+          res => this.course.topics.filter( t => t._id == idTopic).map( t => t.paragraphs = t.paragraphs.filter ( p => p._id != apartado._id)),
+          error => this.errorMsg = error
+        )
+      }
+    })
+  }
+
+  deleteTopic(idTopic: string) {
+    this.showModal({title: 'Eliminar', body: '¿Desea eliminar el tema definitivamente?'}).then( res => {
+      if (res) {
+        this.adminService.removeTopic(idTopic).subscribe(
+          res => this.course.topics = this.course.topics.filter( t => t._id != idTopic),
           error => this.errorMsg = error
         )
       }

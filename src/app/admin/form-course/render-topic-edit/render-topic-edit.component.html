@@ -1,0 +1,36 @@
+
+    <div class="drag-zone all-scroll">
+        <i class="fa fa-arrows-alt"></i>
+        <span class="handle"></span>
+      </div>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link">
+          {{ tema.title }}
+          <span class="col-md-1 text-danger pointer" (click)="deleteTopic(tema._id)">
+              <i class="fas fa-trash"></i>
+            </span>
+        </button>
+      </h5>
+    </div>
+    
+    <div id="{{tema.title}}">
+      <div class="card-body">
+        {{ tema.description }}
+      </div>
+      <div class="card-body">
+        Apartados
+        <button class="btn btn-primary" (click)="createParagraph(tema._id)">Crear apartados</button> 
+        <div [dragula]='"secondary-bag"+tema._id' [dragulaModel]="tema.paragraphs">
+          <div *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action row" 
+            id="list-{{apartado.title}}-list">
+            <span class="col-md-1 text-danger pointer" (click)="deleteParagraph(tema._id, apartado)">
+              <i class="fas fa-trash"></i>
+            </span>
+            <span class="col-md-11 all-scroll">{{apartado.title}}</span>
+          </div>
+        </div>         
+      </div>
+    </div>
+  </div>

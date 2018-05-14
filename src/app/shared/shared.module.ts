@@ -4,6 +4,7 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { FormsModule } from '@angular/forms';
+import { OrderPipe } from './order.pipe';
 
 @NgModule({
   imports: [
@@ -12,12 +13,14 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   declarations: [
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    OrderPipe
     // UploadModalComponent
   ],
   entryComponents: [ ConfirmModalComponent ],
   exports: [
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    OrderPipe
     // UploadModalComponent
   ]
 })

@@ -12,7 +12,8 @@ export interface Itopic {
     title: string,
     description: string,
     paragraphs: Iparagraph[],
-    messages?: Imessage[]
+    messages?: Imessage[],
+    order?: number
 }
 
 export interface Iparagraph {
@@ -20,7 +21,8 @@ export interface Iparagraph {
     title: string,
     video: string,
     messages?: Imessage[],
-    visits?: number
+    visits?: number,
+    order?: number
 }
 
 export interface Imessage {

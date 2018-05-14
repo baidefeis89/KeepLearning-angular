@@ -56,4 +56,10 @@ export class FormCourseComponent implements OnInit {
     )
   }
 
+  reorder() {
+    this.adminService.reorderCourse(this.course).subscribe(
+      res => console.log(res)
+    )
+  }
+
 }

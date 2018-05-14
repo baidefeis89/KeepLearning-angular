@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateTopicsComponent } from './form-course/create-topics/create-topics.component';
 import { FormCourseComponent } from './form-course/form-course.component';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
+import { DragulaModule } from "ng2-dragula";
+import { RenderTopicEditComponent } from './form-course/render-topic-edit/render-topic-edit.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { UploadModalComponent } from './upload-modal/upload-modal.component';
     ReactiveFormsModule,
     ADMIN_ROUTING,
     NgxChartsModule,
-    SharedModule
+    SharedModule,
+    DragulaModule
   ],
   declarations: [
     AdminComponent, 
@@ -29,7 +32,8 @@ import { UploadModalComponent } from './upload-modal/upload-modal.component';
     CreateCourseComponent, 
     CreateTopicsComponent, 
     FormCourseComponent,
-    UploadModalComponent
+    UploadModalComponent,
+    RenderTopicEditComponent
   ],
   entryComponents: [UploadModalComponent],
   providers: [AdminService]

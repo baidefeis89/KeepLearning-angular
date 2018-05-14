@@ -37,6 +37,24 @@ export class AdminService {
     )
   }
 
+  reorderCourse(course: Icourses): Observable<boolean> {
+    return this.http.put(`${constants.URL}admin/course/reorder`, course).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.ok;
+        else throw res.error;
+      }
+    )
+  }
+
+  reorderTopic(topic: Itopic): Observable<boolean> {
+    return this.http.put(`${constants.URL}admin/topic/reorder`, topic).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.ok;
+        else throw res.error;
+      }
+    )
+  }
+
   createTopic(topic: Itopic, idCourse: string): Observable<Itopic> {
     return this.http.post(`${constants.URL}admin/course/${idCourse}/topic`, topic).map(
       (res: Iresponse) => {
@@ -66,6 +84,15 @@ export class AdminService {
 
   removeParagraph(idParagraph: string): Observable<boolean> {
     return this.http.delete(`${constants.URL}admin/paragraph/${idParagraph}`).map(
+      (res: Iresponse) => {
+        if (res.ok) return true;
+        else throw res.error;
+      }
+    )
+  }
+  
+  removeTopic(idTopic: string): Observable<boolean> {
+    return this.http.delete(`${constants.URL}admin/topic/${idTopic}`).map(
       (res: Iresponse) => {
         if (res.ok) return true;
         else throw res.error;
