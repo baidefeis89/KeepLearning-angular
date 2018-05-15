@@ -45,6 +45,13 @@
               <a *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action" 
                 id="list-{{apartado.title}}-list" data-toggle="list" role="tab" 
                 [routerLink]="['paragraph/', apartado._id]">{{apartado.title}}</a>
+
+              <div class="card-body" *ngIf="tema.extra.length > 0">
+                Material extra
+              </div>
+              <div *ngFor="let extra of tema.extra" class="list-group-item list-group-item-action" 
+              id="list-{{extra.title}}-list" data-toggle="list" role="tab" 
+              (click)="download(extra.file)">{{extra.title}}</div>
             </div>
           </div>
         </div>

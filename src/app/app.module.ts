@@ -13,6 +13,7 @@ import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesService } from './cursos/services/courses.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MenuModule,
     APP_ROUTING,
     HttpClientModule,
+    HttpModule,
     BrowserAnimationsModule,
     NgbModule.forRoot()
   ],

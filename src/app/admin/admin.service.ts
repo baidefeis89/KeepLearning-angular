@@ -72,6 +72,15 @@ export class AdminService {
       }
     )
   }
+  
+  addExtraMaterial(extra: any, idParagraph: string): Observable<Iparagraph> {
+    return this.http.post(`${constants.URL}admin/topic/${idParagraph}/extra`, extra).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result;
+        else throw res.error
+      }
+    )
+  }
 
   removeCourse(idCourse: string): Observable<boolean> {
     return this.http.delete(`${constants.URL}admin/course/${idCourse}`).map(
@@ -84,6 +93,15 @@ export class AdminService {
 
   removeParagraph(idParagraph: string): Observable<boolean> {
     return this.http.delete(`${constants.URL}admin/paragraph/${idParagraph}`).map(
+      (res: Iresponse) => {
+        if (res.ok) return true;
+        else throw res.error;
+      }
+    )
+  }
+
+  removeExtra(idExtra: string, idTopic: string): Observable<boolean> {
+    return this.http.delete(`${constants.URL}admin/topic/${idTopic}/extra/${idExtra}`).map(
       (res: Iresponse) => {
         if (res.ok) return true;
         else throw res.error;

@@ -38,11 +38,12 @@ export class CreateTopicsComponent implements OnInit {
   }
 
   onDrop() {
-    console.log(this.course.topics.map( t => t._id));
-    this.adminService.reorderCourse(this.course).subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    )
+    setTimeout(() => {
+      this.adminService.reorderCourse(this.course).subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+    }, 0);
   }
 
   createTopic() {
@@ -50,25 +51,18 @@ export class CreateTopicsComponent implements OnInit {
     this._resetTopic();
   }
 
-  createParagraph(idTopic: string) {
-    this.showModal({body: idTopic, upload: true, title: 'Añadir apartado'}).then( res => {
-      if (res)
-        this.course.topics
-          .filter( t => t._id == idTopic)
-          .map( t => t.paragraphs.push(res))
-    })
-  }
+  
 
-  deleteParagraph(idTopic:string, apartado: Iparagraph) {
-    this.showModal({title: 'Eliminar', body: '¿Desea eliminar el apartado definitivamente?'}).then( res => {
-      if (res) {
-        this.adminService.removeParagraph(apartado._id).subscribe(
-          res => this.course.topics.filter( t => t._id == idTopic).map( t => t.paragraphs = t.paragraphs.filter ( p => p._id != apartado._id)),
-          error => this.errorMsg = error
-        )
-      }
-    })
-  }
+  // deleteParagraph(idTopic:string, apartado: Iparagraph) {
+  //   this.showModal({title: 'Eliminar', body: '¿Desea eliminar el apartado definitivamente?'}).then( res => {
+  //     if (res) {
+  //       this.adminService.removeParagraph(apartado._id).subscribe(
+  //         res => this.course.topics.filter( t => t._id == idTopic).map( t => t.paragraphs = t.paragraphs.filter ( p => p._id != apartado._id)),
+  //         error => this.errorMsg = error
+  //       )
+  //     }
+  //   })
+  // }
 
   deleteTopic(idTopic: string) {
     this.showModal({title: 'Eliminar', body: '¿Desea eliminar el tema definitivamente?'}).then( res => {

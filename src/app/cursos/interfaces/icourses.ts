@@ -13,7 +13,12 @@ export interface Itopic {
     description: string,
     paragraphs: Iparagraph[],
     messages?: Imessage[],
-    order?: number
+    order?: number,
+    extra?: {
+        _id?: string,
+        title: string,
+        file: string
+    }[]
 }
 
 export interface Iparagraph {

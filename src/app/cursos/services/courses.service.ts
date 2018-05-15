@@ -5,13 +5,14 @@ import "rxjs/add/observable/of";
 import "rxjs/add/operator/map";
 import * as constants from '../../constants';
 import { HttpClient } from "@angular/common/http";
+import { Http, ResponseContentType } from "@angular/http";
 import { Iresponse } from '../../interfaces/iresponse';
 //response.result.avatar = `${this.urlServer}img/users/${response.result.avatar}`;
 @Injectable()
 export class CoursesService {
   private courses: Icourses[];
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private httpDown: Http ) { }
 
   getCourses(): Observable<Icourses[]> {
     return this.http.get(`${constants.URL}cursos`).map(
@@ -58,6 +59,16 @@ export class CoursesService {
         return res.error;
       }
     )
+  }
+
+  downloadExtra(fileName: string): Observable<any> {
+    return this.httpDown.get(`${constants.URL}uploads/${fileName}`, {responseType: ResponseContentType.Blob}).map(
+      res => {
+        return {
+          filename: fileName,
+          data: res.blob()
+        };
+    })
   }
 
 }
