@@ -21,16 +21,14 @@ export class AdminCoursesComponent implements OnInit {
     )
   }
 
-  editCourse() {
-    console.log('asf'); 
-  }
-
   removeCourse(idCourse: string) {
     this.showModal('Eliminar','¿Desea eliminar el curso definitivamente?',false).then(
       response => {
-        this.adminService.removeCourse(idCourse).subscribe(
-          res => {console.log(res);this.courses = this.courses.filter( c => c._id != idCourse)}
-        )
+        if (response) {
+          this.adminService.removeCourse(idCourse).subscribe(
+            res => this.courses = this.courses.filter( c => c._id != idCourse)
+          )
+        }
       },
       err => console.log(err)
     )

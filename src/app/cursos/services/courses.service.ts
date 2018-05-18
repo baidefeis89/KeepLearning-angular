@@ -71,4 +71,13 @@ export class CoursesService {
     })
   }
 
+  getUserName(): Observable<string> {
+    return this.http.get(`${constants.URL}usuarios/me`).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result.name + ' ' + res.result.surname
+        else throw(res.error);
+      }
+    )
+  }
+
 }

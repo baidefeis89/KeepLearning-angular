@@ -1,15 +1,14 @@
 <div class="container">
   
-    <h3>Creación de nuevo curso</h3>
-      <div [ngSwitch]="index" *ngIf="!errorMsg && course">
-        <app-create-course *ngSwitchCase="0" [course]="course" (next)="nextSection($event)"></app-create-course>
-        <app-create-topics *ngSwitchCase="1" [course]="course" [topic]="topic" (saveTopic)="saveTopic($event)" (reorder)="reorder()"></app-create-topics>
-      </div>
-      <div *ngIf="errorMsg" class="alert alert-danger">
-        {{ errorMsg }}
-      </div>
-      
-    {{ course | json }}
-    
+  <h3>Creación de nuevo curso</h3>
+  <div [ngSwitch]="index" *ngIf="!errorMsg && course">
+    <app-create-course *ngSwitchCase="0" [course]="course" (next)="nextSection($event)"></app-create-course>
+    <app-create-topics *ngSwitchCase="1" [course]="course" [topic]="topic" (saveTopic)="saveTopic($event)" 
+      (reorder)="reorder()"></app-create-topics>
   </div>
+  <div *ngIf="errorMsg" class="alert alert-danger">
+    {{ errorMsg }}
+  </div>
+  
+</div>
   

@@ -22,7 +22,13 @@
 
 
   <div class="col-md-6" id="accordion" [dragula]='"main-bag"' [dragulaModel]="course.topics">   
-    <app-render-topic-edit *ngFor="let tema of course.topics" [tema]="tema" (delete)="deleteTopic($event)"></app-render-topic-edit>
+    <div *ngFor="let tema of course.topics">
+      <div class="drag-zone all-scroll">
+          <i class="fa fa-arrows-alt"></i>
+          <span class="handle"></span>
+        </div>
+        <app-render-topic-edit [tema]="tema" (delete)="deleteTopic($event)"></app-render-topic-edit>
+    </div>
   </div>
 </div>
 <div>

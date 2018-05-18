@@ -1,30 +1,31 @@
 
-    <div class="drag-zone all-scroll">
+    <!-- <div class="drag-zone all-scroll">
         <i class="fa fa-arrows-alt"></i>
         <span class="handle"></span>
-      </div>
-  <div class="card">
+      </div> -->
+  <div class="card mb-4">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-link">
+        <div>
           {{ tema.title }}
           <span class="col-md-1 text-danger pointer" (click)="deleteTopic(tema._id)">
-              <i class="fas fa-trash"></i>
-            </span>
-            <span (click)="uploadExtra(tema)">
-              Subir material extra
-            </span>
-        </button>
+            <i class="fas fa-trash"></i>
+          </span>
+          <span (click)="uploadExtra(tema)" class="btn btn-link">
+            Subir material extra
+          </span>
+        </div>
       </h5>
     </div>
     
     <div id="{{tema.title}}">
       <div class="card-body">
-        {{ tema.description }}
+        {{ tema.description }} 
       </div>
       <div class="card-body">
-        Apartados
-        <button class="btn btn-primary" (click)="createParagraph(tema._id)">Crear apartados</button> 
+        <h5>Apartados
+          <button class="btn btn-primary" (click)="createParagraph(tema._id)">Nuevo apartado</button> 
+        </h5>
         <div [dragula]='"secondary-bag"+tema._id' [dragulaModel]="tema.paragraphs">
           <div *ngFor="let apartado of tema.paragraphs" class="list-group-item list-group-item-action row" 
             id="list-{{apartado.title}}-list">
@@ -34,7 +35,7 @@
             <span class="col-md-11 all-scroll">{{apartado.title}}</span>
           </div>
         </div> 
-        Extra
+        <h5 *ngIf="tema.extra.length > 0">Extras</h5>
         <div *ngFor="let ex of tema.extra" class="list-group-item list-group-item-action row" 
             id="list-{{ex.title}}-list">
             <span class="col-md-1 text-danger pointer" (click)="deleteExtra(ex._id)">

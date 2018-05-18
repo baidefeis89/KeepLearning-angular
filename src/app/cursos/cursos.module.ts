@@ -11,6 +11,7 @@ import { VideoComponent } from './videocamera/video.component';
 import { ParagraphComponent } from './paragraph/paragraph.component';
 import { MessageComponent } from './message/message.component';
 import { FormsModule } from '@angular/forms';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     VideoShowComponent,
     VideoComponent,
     ParagraphComponent,
-    MessageComponent
+    MessageComponent,
+    ChatComponent
   ],
   providers: [ CourseResolverService, ParagraphResolverService]
 })
