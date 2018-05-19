@@ -15,6 +15,7 @@ import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { DragulaModule } from "ng2-dragula";
 import { RenderTopicEditComponent } from './form-course/render-topic-edit/render-topic-edit.component';
 import { UploadGenericModalComponent } from './upload-generic-modal/upload-generic-modal.component';
+import { AdminMessagesComponent } from './admin-messages/admin-messages.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { UploadGenericModalComponent } from './upload-generic-modal/upload-gener
     FormCourseComponent,
     UploadModalComponent,
     UploadGenericModalComponent,
-    RenderTopicEditComponent
+    RenderTopicEditComponent,
+    AdminMessagesComponent
   ],
   entryComponents: [UploadModalComponent, UploadGenericModalComponent],
   providers: [AdminService]

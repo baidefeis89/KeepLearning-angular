@@ -1,0 +1,26 @@
+.image {
+    max-width: 100px;
+}
+
+.image img {
+    width: 100%;
+}
+
+.text-body {
+    min-height: 200px;
+}
+
+.response {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+}
+
+.button {
+    position: absolute;
+    height: 100%;
+    right: 14px;
+    top: 0;
+}

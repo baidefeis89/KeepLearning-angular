@@ -117,4 +117,22 @@ export class AdminService {
       }
     )
   }
+
+  getMessagesNumber(): Observable<number> {
+    return this.http.get(`${constants.URL}admin/messages-number`).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result;
+        else throw res.error;
+      }
+    )
+  }
+
+  getMessages(): Observable<any[]> {
+    return this.http.get(`${constants.URL}admin/messages`).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result;
+        else throw res.error;
+      }
+    )
+  }
 }

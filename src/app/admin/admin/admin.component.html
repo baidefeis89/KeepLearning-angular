@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-2 text-white bg-dark side-menu">
       <div class="nav flex-column nav-pills">
-          <a class="nav-link" [routerLink]="['/admin/resume']">Home</a>
-          <a class="nav-link" [routerLink]="['/admin/courses']">Cursos</a>
-          <a class="nav-link" [routerLink]="['/admin/users']">Alumnos</a>
+          <a class="nav-link" [routerLink]="['resume']">Home</a>
+          <a class="nav-link" [routerLink]="['courses']">Cursos</a>
+          <a class="nav-link" [routerLink]="['messages']">Mensajes 
+            <span class="badge badge-info" *ngIf="messagesNumber > 0">{{ messagesNumber }}</span>
+          </a>
           <a class="nav-link" [routerLink]="['/admin']">Settings</a>
         </div>
   </div>
