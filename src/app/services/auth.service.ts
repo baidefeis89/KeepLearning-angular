@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import * as constants from '../constants';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/catch';
+import { Iresponse } from '../interfaces/iresponse';
 
 @Injectable()
 export class AuthService {
   @Output() $loginEmitter = new EventEmitter<boolean>();
   logged: boolean;
+  admin: boolean;
 
   constructor( private http: HttpClient ) { }
 
@@ -65,6 +68,21 @@ export class AuthService {
     } else {
       return Observable.of(false);
     }
+  }
+
+  isAdmin(): Observable<boolean> {
+    if (this.admin) return Observable.of(true)
+    else if (this.logged || localStorage.getItem('token')) {
+      return this.http.get(`${constants.URL}auth/admin`).map( (res: Iresponse) => {
+        if (res.ok) {
+          this.admin = true;
+          return true;
+        } else {
+          return false
+        }
+      }
+      ).catch( err => Observable.of(false))
+    } else return Observable.of(false);
   }
   // isLogged() {
   //   if (!localStorage.getItem('token')) return Observable.of(false);

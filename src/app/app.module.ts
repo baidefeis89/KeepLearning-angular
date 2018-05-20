@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesService } from './cursos/services/courses.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
+import { AdminActivateGuard } from './guards/admin-activate-guard.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HttpModule } from '@angular/http';
     AuthService,
     LoginActivateGuard,
     LogoutActivateGuard,
+    AdminActivateGuard,
     CoursesService
   ],
   bootstrap: [AppComponent]
