@@ -135,4 +135,23 @@ export class AdminService {
       }
     )
   }
+
+  setRegisterPreferences(preferences: {isPublic: boolean, key?: string, _id: string}): Observable<boolean> {
+    return this.http.post(`${constants.URL}admin/settings`, preferences).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.ok;
+        else return false;
+      }
+    )
+  }
+
+  getRegisterPreferences(): Observable<any> {
+    return this.http.get(`${constants.URL}admin/settings`).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result;
+        else throw res.error;
+      }
+    )
+  }
+
 }

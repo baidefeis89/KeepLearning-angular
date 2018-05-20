@@ -9,7 +9,7 @@ import { Icourses } from '../../cursos/interfaces/icourses';
 })
 export class ResumeComponent implements OnInit {
   legend = 'Fruits exports';
-  view = [600, 400]; // Size (undefined -> parent container size)
+  view = [600, 400];
   coursesViews: {name: string, value: number}[] = [];
   coursesStatistics: any = [];
   topicsStatistics: any = [];
@@ -50,7 +50,6 @@ export class ResumeComponent implements OnInit {
       data.push({title: curso.title, data: courseInfo})
     })
     this.coursesStatistics = data;
-    console.log(this.coursesStatistics);
   }
 
   private _asdf() {

@@ -10,20 +10,24 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   error: string = null;
+  isPublic: boolean;
   user = {
     name: '',
     surname: '',
     email: '',
     email2: '',
     password: '',
-    password2: ''
+    password2: '',
+    key: ''
   };
 
   constructor( private auth: AuthService, 
                private router: Router ) { }
 
   ngOnInit() {
-    
+    this.auth.getRegisterSettings().subscribe(
+      res => this.isPublic = res
+    )
   }
 
   register() {

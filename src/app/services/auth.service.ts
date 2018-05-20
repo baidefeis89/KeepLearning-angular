@@ -84,6 +84,15 @@ export class AuthService {
       ).catch( err => Observable.of(false))
     } else return Observable.of(false);
   }
+
+  getRegisterSettings(): Observable<any> {
+    return this.http.get(`${constants.URL}auth/settings`).map(
+      (res: Iresponse) => {
+        if (res.ok) return res.result;
+        else throw(res.error);
+      }
+    )
+  }
   // isLogged() {
   //   if (!localStorage.getItem('token')) return Observable.of(false);
   //   return this.http.get<{ok: boolean}>(`${constants.URL}auth/token`).map(

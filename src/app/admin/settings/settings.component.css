@@ -1,0 +1,7 @@
+
+.switch.primary-switch label input[type=checkbox]:checked + .lever {
+    background-color: #689DF6;
+}
+.switch.primary-switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #4285F4;
+}

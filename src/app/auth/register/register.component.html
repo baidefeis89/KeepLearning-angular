@@ -1,5 +1,5 @@
 <div class="container">
-<form (ngSubmit)="register()" novalidate>
+<form (ngSubmit)="register()" novalidate #formulario="ngForm">
   <legend>Create an account</legend>
 
   <div class="form-group">
@@ -38,18 +38,15 @@
     #passwordModel="ngModel" [ngClass]="validClasses(passwordModel,'is-valid','is-invalid')">
   </div>
   
+  <div class="form-group" *ngIf="!isPublic">
+    <label for="key">Clave de registro:</label>
+    <input type="password" class="form-control" id="key" name="key" placeholder="Password" [(ngModel)]="user.key" required
+    #keyModel="ngModel" [ngClass]="validClasses(keyModel,'is-valid','is-invalid')">
+  </div>
+  
   <a class="btn btn-secondary" [routerLink]="['/auth']">Login</a>
-  <button type="submit" class="btn btn-primary">Create account</button>
+  <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Create account</button>
 </form>
-
-<!-- <button class="btn btn-facebook mt-3" aeFbLogin [scopes]="['email', 'public_profile']"
-(loginOk)="loggedFacebook($event)" (loginError)="showError($event)">
-Register with Facebook
-</button>
-
-<button class="btn btn-google mt-1" aeGoogleLogin (loginOk)="loggedGoogle($event)" (loginError)="showError($event)">
-  Register with Google
-</button> -->
 
 <div *ngIf="error" class="alert alert-danger mt-3" role="alert">
   {{error}}
