@@ -40,7 +40,7 @@
   
   <div class="form-group" *ngIf="!isPublic">
     <label for="key">Clave de registro:</label>
-    <input type="password" class="form-control" id="key" name="key" placeholder="Password" [(ngModel)]="user.key" required
+    <input type="password" class="form-control" id="key" name="key" placeholder="Register key" [(ngModel)]="user.key" required
     #keyModel="ngModel" [ngClass]="validClasses(keyModel,'is-valid','is-invalid')">
   </div>
   

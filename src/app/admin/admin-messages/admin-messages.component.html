@@ -13,7 +13,7 @@
         {{message.text}}
       </div>
       <div class="col-md-12 response">
-        <textarea name="" id="" class="form-control input" [(ngModel)]="message.response"></textarea>
+        <textarea class="form-control input" [(ngModel)]="message.response"></textarea>
         <button class="btn btn-primary button" (click)="response(message._id, message.response)" [disabled]="!message.response"><i class="fab fa-telegram-plane fa-lg"></i><br> Responder</button>
       </div>
 

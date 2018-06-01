@@ -49,7 +49,6 @@ export class FormCourseComponent implements OnInit {
   }
 
   saveTopic($event) {
-    console.log('event:',$event);
     this.adminService.createTopic($event,this.course._id).subscribe(
       res => this.course.topics.push(res),
       err => this.errorMsg = 'Error al crear el tema'
@@ -58,7 +57,7 @@ export class FormCourseComponent implements OnInit {
 
   reorder() {
     this.adminService.reorderCourse(this.course).subscribe(
-      res => console.log(res)
+      res => null
     )
   }
 

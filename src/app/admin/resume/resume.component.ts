@@ -23,7 +23,6 @@ export class ResumeComponent implements OnInit {
       this.statistics = res
       this._getCoursesViews();
       this._getCoursesStatistics();
-      this._asdf();
     });
   }
 
@@ -51,22 +50,4 @@ export class ResumeComponent implements OnInit {
     })
     this.coursesStatistics = data;
   }
-
-  private _asdf() {
-    //visualizaciones por tema
-    let info = [];
-    this.statistics.map( (curso, index) => {
-      info.push({curso: curso.title, temas: []})
-      curso.topics.map( tema => {
-        let visualizaciones = 0;
-        tema.paragraphs.map( p => visualizaciones += p.visits);
-        info[index].temas.push({name: tema.title, value: visualizaciones});
-      })
-    })
-    console.log(info);
-  }
-
-
-
-
 }

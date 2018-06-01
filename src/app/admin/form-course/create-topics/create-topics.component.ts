@@ -43,7 +43,7 @@ export class CreateTopicsComponent implements OnInit {
         res => console.log(res),
         err => console.log(err)
       )
-    }, 0);
+    });
   }
 
   createTopic() {

@@ -43,7 +43,6 @@ export class CreateCourseComponent implements OnInit {
   }
 
   onFileChange(event) {
-    console.log(event.target.files);
     if(event.target.files.length > 0) {
       let file = event.target.files[0];
       this.form.get('image').setValue(file);
