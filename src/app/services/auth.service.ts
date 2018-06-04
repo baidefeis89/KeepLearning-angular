@@ -48,6 +48,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.logged = false;
+    this.admin = false;
     this.$loginEmitter.emit(false);
   }
 

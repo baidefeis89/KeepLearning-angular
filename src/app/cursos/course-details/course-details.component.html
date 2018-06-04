@@ -15,7 +15,7 @@
 <section class="bg-primary">
   <div class="container">
     <div class="row">    
-      <div class="col-md-3" id="accordion">
+      <div class="col-sm-12 col-xl-3" id="accordion">
           <h2 class="text-white"><strong>{{ course.title }}</strong></h2>
         <div *ngFor="let tema of course.topics">
     
@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <div class="col-md-9">
+      <div class="col-sm-12 col-xl-9">
         <app-chat></app-chat>
         <!-- <div class="chat bg-white pb-5 pt-4" #chat>
           <div class="row" *ngFor="let msg of messages">

@@ -1,0 +1,56 @@
+<div class="col-md-6">
+  <div class="ibox">
+    <div class="ibox-content">
+        <h3>{{ newForm.title }}</h3>
+        <p>{{ newForm.description }}</p>
+    </div>
+  </div>
+
+  <div [dragula]='"main-bag"' [dragulaModel]="newForm.sections">
+    <div class="ibox" *ngFor="let section of (newForm.sections | orderQuestions); let sectionIndex = index">
+      <div class="drag-zone pointer">
+        <i class="fa fa-arrows-alt"></i>
+        <span class="handle"></span>
+      </div>
+    <div class="ibox-title">
+      <h3>Sección: {{section.order}}</h3>
+
+    </div>
+    <div class="ibox-content">
+      <div [dragula]='"secondary-bag"' [dragulaModel]="section.questions">
+        <div *ngFor="let question of (section.questions | orderQuestions)" class="row m-b-sm">
+          <div class="col-md-11">
+            <span class="col-md-1"><i class="fa fa-arrows-alt"></i></span>
+            <wsd-render-input [question]="question"></wsd-render-input>
+          </div>
+          <span class="text-danger col-md-1 m-t-lg" (click)="deleteQuestion(sectionIndex, question)"><i class="fa fa-times"></i></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-danger" (click)="deleteSection(sectionIndex)">Eliminar sección</button>
+        </div>
+        <div class="col-md-6">
+          <label for="nextSection">Siguiente sección</label>
+          <select name="nextSection" (change)="changeNextSection(sectionIndex, nextSection)" #nextSection [ngModel]="section.nextSection">
+            <option value="next" *ngIf="sectionIndex < newForm.sections.length - 1">Siguiente</option>
+            <option value="send">Enviar formulario</option>
+            <ng-container *ngFor="let section of newForm.sections">
+              <option [value]="section.order" *ngIf="section.order != sectionIndex">{{ section.order }}</option>
+            </ng-container>
+          </select>
+        </div>
+        
+      </div>
+      
+      
+    </div>
+  </div>
+  </div>
+
+  <div class="ibox">
+    <div class="ibox-content pointer" (click)="newSection()">
+      <h3>+ Nueva sección</h3>
+    </div>
+  </div>
+</div>

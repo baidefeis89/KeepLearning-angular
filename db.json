@@ -1,0 +1,28 @@
+{
+  "forms": [
+    {
+      "id": 11,
+      "title": "Nuevo formulario",
+      "description": "Descripción del formulario",
+      "sections": []
+    }
+  ],
+  "validations": [],
+  "types": [
+    {
+      "id": 1,
+      "type": "text",
+      "description": "respuesta corta"
+    },
+    {
+      "id": 2,
+      "type": "textarea",
+      "description": "respuesta larga"
+    },
+    {
+      "id": 3,
+      "type": "options",
+      "description": "desplegable"
+    }
+  ]
+}

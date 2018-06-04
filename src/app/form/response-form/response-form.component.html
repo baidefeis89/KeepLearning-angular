@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="ibox">
+      <div class="ibox-content">
+          <h3>{{ newForm.title }}</h3>
+          <p>{{ newForm.description }}</p>
+      </div>
+    </div>
+    <div class="ibox">
+      <div class="ibox-content">
+        <wsd-render-form *ngIf="section" [section]="section" (nextSection)="goToSection($event)" 
+          (previousSection)="goToPreviousSection()" (sendForm)="sendForm()"></wsd-render-form>
+      </div>
+    </div>
+  </div>
+</div>
