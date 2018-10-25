@@ -1,0 +1,56 @@
+<div class="container">
+    <form (ngSubmit)="editProfile()" id="form-profile" class="mt-4" method="POST" role="form">
+      <legend>Edit profile</legend>
+
+      <div class="form-group">
+        <label for="correo">Email:</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="user.email">
+        <label for="name">Nombre:</label>
+        <input type="text" class="form-control" name="nameUser" id="name" placeholder="Name" [(ngModel)]="user.name">
+        <label for="surname">Apellidos:</label>
+        <input type="text" class="form-control" name="surnameUser" id="surname" placeholder="Surname" [(ngModel)]="user.surname">
+      </div>
+      <p class="text-danger" id="errorInfo1"></p>
+      <p class="text-success" id="okInfo1"></p>
+      <button type="submit" class="btn btn-primary">Edit profile</button>
+      <div class="alert" *ngIf="editProfileMessage" 
+      [ngClass]="{'alert-danger': !success ,'alert-success': success }">
+        {{editProfileMessage}}
+      </div>
+    </form>
+    <form (ngSubmit)="editAvatar()" id="form-avatar" class="mt-4" method="POST" role="form" enctype="multipart/form-data">
+      <legend>Edit avatar</legend>
+
+      <div class="form-group">
+        <input type="file" class="form-control mb-3" id="image" name="image" (change)="changeImage(imageInput)" #imageInput>
+        <div class="col img-thumbnail" *ngIf="!imagen">
+            <img id="avatar" [src]="user.avatar" alt="">
+        </div>
+      </div>
+      <p class="text-danger" id="errorInfo2"></p>
+      <p class="text-success" id="okInfo2"></p>
+      <button type="submit" class="btn btn-primary">Edit avatar</button>
+      <div class="alert" *ngIf="editAvatarMessage" 
+      [ngClass]="{'alert-danger': !success ,'alert-success': success }">
+        {{editAvatarMessage}}
+      </div>
+    </form>
+
+    <form (ngSubmit)="editPassword()" id="form-password" class="mt-4" method="POST" role="form">
+      <legend>Edit password</legend>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" [(ngModel)]="passwords.password">
+        <label for="password2">Repeat password:</label>
+        <input type="password" class="form-control" name="password2" id="password2" placeholder="Repeat password" [(ngModel)]="passwords.password2">
+      </div>
+      <p class="text-danger" id="errorInfo3"></p>
+      <p class="text-success" id="okInfo3"></p>
+      <button type="submit" class="btn btn-primary">Edit password</button>
+      <div class="alert mt-3" *ngIf="editPasswordMessage" 
+      [ngClass]="{'alert-danger': !success ,'alert-success': success }">
+        {{editPasswordMessage}}
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close"
+  (click)="activeModal.dismiss()"> <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body"> 
+  <form  novalidate enctype="multipart/form-data" (ngSubmit)="onSubmit()" [formGroup]="formularioFile">
+    <div class="form-group">
+      <label for="title">Titulo</label>
+      <input type="text" class="form-control" name="title" id="title" required formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="video">File</label>
+      <!-- <input type="file" class="form-control" name="File" id="File" required ngModel accept="File/mp4,File/x-m4v,File/*"> -->
+      <input type="file" class="form-control" name="File" id="File" required (change)="onFileChange($event)" #fileInput>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary" [disabled]="formularioFile.invalid || fileInput.files.length < 1" *ngIf="!loading">Guardar</button>
+    <button type="submit" class="btn btn-block btn-primary" [disabled]="true" *ngIf="loading">Guardar <i class="fas fa-spinner fa-pulse"></i></button>
+  </form>
+</div>
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-block btn-primary" (click)="activeModal.close(true)">Guardar</button> -->
+</div>

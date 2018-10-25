@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>Crear nuevo tema</h4>
+    <form class="form-controller" novalidate #courseForm="ngForm">
+      <div class="form-group">
+        <label for="title">Titulo</label>
+        <input type="text" class="form-control" required id="title" [(ngModel)]="newTopic.title" name="title" #title="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea name="description" id="description" [(ngModel)]="newTopic.description" rows="3" class="form-control" required #description="ngModel"></textarea>
+      </div>
+    
+      <div class="form-group">
+        <button class="btn btn-primary" [disabled]="courseForm.invalid" (click)="createTopic()">Crear</button>
+      </div>
+    </form>
+      
+  </div>
+
+
+
+  <div class="col-md-6" id="accordion" [dragula]='"main-bag"' [dragulaModel]="course.topics">   
+    <div *ngFor="let tema of course.topics">
+      <div class="drag-zone all-scroll">
+          <i class="fa fa-arrows-alt"></i>
+          <span class="handle"></span>
+        </div>
+        <app-render-topic-edit [tema]="tema" (delete)="deleteTopic($event)"></app-render-topic-edit>
+    </div>
+  </div>
+</div>
+<div>
+  <a class="btn btn-primary" [routerLink]="['/admin/courses']">Finalizar</a>
+</div>

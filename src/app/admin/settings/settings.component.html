@@ -1,0 +1,16 @@
+<div class="container mt-4" *ngIf="config">
+  <h5>Configuración del registro</h5>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="notPublic" (change)="setPublic(notPublic)">
+    <label class="custom-control-label" for="customCheck1">Deshabilitar registro público</label>
+  </div>
+  <div *ngIf="!config.isPublic" class="form-group">
+    <label for="">Clave de registro</label>
+    <input [type]="mostrar ? 'text' : 'password'" class="form-control" [(ngModel)]="config.key">
+    <input type="checkbox" name="mostrar" id="mostrar" [(ngModel)]="mostrar">
+    <label for="mostrar">Mostrar</label>
+  </div>
+  <button class="btn btn-primary mt-4 mb-4" (click)="changeRegisterPreferences()">Guardar</button>
+  <div class="alert alert-success" *ngIf="!error && infoMsg">{{ infoMsg }}</div>
+  <div class="alert alerg-danger" *ngIf="error">{{ infoMsg }}</div>
+</div>

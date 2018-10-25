@@ -1,0 +1,54 @@
+<div class="container">
+<form (ngSubmit)="register()" novalidate #formulario="ngForm">
+  <legend>Create an account</legend>
+
+  <div class="form-group">
+    <label for="nombre">Name:</label>
+    <input type="text" class="form-control" id="name" name="nameUser" placeholder="Name" [(ngModel)]="user.name" required 
+    #nameModel="ngModel" [ngClass]="validClasses(nameModel,'is-valid','is-invalid')" minlength="3">
+  </div>
+  
+  <div class="form-group">
+    <label for="apellidos">Surname:</label>
+    <input type="text" class="form-control" id="apellidos" name="surname" placeholder="Surname" [(ngModel)]="user.surname" required 
+    #nameModel="ngModel" [ngClass]="validClasses(nameModel,'is-valid','is-invalid')" minlength="3">
+  </div>
+
+  <div class="form-group">
+    <label for="correo">Email:</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="user.email" required 
+    #emailModel="ngModel" [ngClass]="validClasses(emailModel,'is-valid','is-invalid')" email>
+  </div>
+
+  <div class="form-group">
+    <label for="correo">Repeat Email:</label>
+    <input type="email" class="form-control" id="email2" name="email2" placeholder="Email" [(ngModel)]="user.email2" required 
+    #email2Model="ngModel" [ngClass]="validClasses(email2Model,'is-valid','is-invalid')" email>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password" required 
+    #passwordModel="ngModel" [ngClass]="validClasses(passwordModel,'is-valid','is-invalid')">
+  </div>
+  
+  <div class="form-group">
+    <label for="password2">Repeat Password:</label>
+    <input type="password" class="form-control" id="password2" name="password2" placeholder="Password" [(ngModel)]="user.password2" required 
+    #passwordModel="ngModel" [ngClass]="validClasses(passwordModel,'is-valid','is-invalid')">
+  </div>
+  
+  <div class="form-group" *ngIf="!isPublic">
+    <label for="key">Clave de registro:</label>
+    <input type="password" class="form-control" id="key" name="key" placeholder="Register key" [(ngModel)]="user.key" required
+    #keyModel="ngModel" [ngClass]="validClasses(keyModel,'is-valid','is-invalid')">
+  </div>
+  
+  <a class="btn btn-secondary" [routerLink]="['/auth']">Login</a>
+  <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Create account</button>
+</form>
+
+<div *ngIf="error" class="alert alert-danger mt-3" role="alert">
+  {{error}}
+</div>
+</div>

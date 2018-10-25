@@ -1,0 +1,124 @@
+<!-- <div class="row" *ngIf="!createError; else noError"> -->
+<div class="row">
+  <div class="col-md-6">
+    <div class="card p-2">
+      <div class="card-content">
+        <form #myForm="ngForm" novalidate>
+      
+          <div class="form-group">
+            <label for="title">Titulo del formulario</label>
+            <input class="form-control" type="text" [(ngModel)]="newForm.title" name="title">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Descripcion</label>
+            <input class="form-control" type="text" [(ngModel)]="newForm.description" name="description">
+          </div>
+      
+          <div class="form-group">
+            <label for="titulo">Titulo del campo</label> 
+            <input class="form-control" type="text" [(ngModel)]="newQuestion.title" name="titulo" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tipo">Tipo del campo</label> 
+            <select class="form-control" name="titulo" [(ngModel)]="newQuestion.type" name="tipo" required>
+              <option *ngFor="let type of types" [value]="type.type">{{ type.description }}</option>
+            </select>
+          </div> 
+
+          <div class="form-group" *ngIf="newQuestion.type === types[2].type">
+            <ul class="list-group">
+              <li class="badge badge-primary m-l-sm" *ngFor="let option of newQuestion.options; let i = index">{{ option }} <span class="text-danger m-l-sm" (click)="deleteOption(i)"><i class="fa fa-times"></i></span></li>
+            </ul>
+            <div class="form-group form-inline">
+              <label for="opcion">Opcion</label>
+              <input class="form-control" type="text" [(ngModel)]="newOption" name="opcion">
+              <button class="btn btn-warning" (click)="addOption(newOption)">+</button>
+            </div>
+          </div>
+          
+          <div class="form-group" *ngIf="newQuestion.type === types[0].type">
+            <div class="form-group">
+              <label>
+                <input type="radio" name="type" value="text" (click)="changeType('text')" checked>
+                Texto
+              </label>
+              <label>
+                <input type="radio" name="type" value="number" (click)="changeType('number')">
+                Numero
+              </label>
+              <label>
+                <input type="radio" name="type" value="date" (click)="changeType('date')">
+                Fecha
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <input type="checkbox" name="required" id="required" [(ngModel)]="newQuestion.mandatory">
+            <label for="required">Requerido</label>
+          </div>
+
+          <!-- VALIDACIONES -->
+          <div class="from-group">
+            <ul class="list-group">
+              <li class="badge badge-warning pointer" (click)="showHideFilter()">+ Nuevo filtro</li>
+              <li class="badge badge-primary m-l-sm" *ngFor="let validation of newQuestion.validations; let i = index">{{ validation.type }} : {{ validation.subtype }}<span *ngIf="validation.value"> : {{ validation.value }}</span> <span class="text-danger m-l-sm" (click)="deleteOption(i)"><i class="fa fa-times"></i></span></li>
+            </ul>
+            <div *ngIf="showFilter">
+              <div class="form-group">
+                <label for="typeFilter">Tipo</label>
+                <select name="typeFilter" id="typeFilter" class="form-control" [(ngModel)]="newFilter.type">
+                  <option *ngFor="let validation of validations" [value]="validation.type">{{ validation.type | uppercase }}</option>
+                </select>
+
+                <label for="typeFilter">Subtipo</label>
+                <select name="typeFilter" id="typeFilter" class="form-control" [(ngModel)]="newFilter.subtype">
+                  <option></option>
+                  <option *ngFor="let subtype of getSubtypes(newFilter.type)" [value]="subtype.subtype">{{ subtype.subtype }}</option>
+                </select>
+                
+                <div *ngIf="isValueRequired(newFilter)">
+                  <label for="valueFilter">Valor</label>
+                  <input class="form-control" [type]="newFilter.type" id="valueFilter" name="valueFilter" [(ngModel)]="newFilter.value">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="error">Descripcion del error</label>
+                <input type="text" name="error" id="error" class="form-control" [(ngModel)]="newFilter.errorDescription"> 
+              </div>
+             
+              <button class="badge badge-warning m-b-sm" (click)="addFilter(newFilter)">Guardar filtro</button>
+              
+            </div>
+          </div>
+          
+
+          <button class="btn btn-primary" (click)="add(newQuestion)" [disabled]="myForm.invalid">Add</button>
+        </form>
+        <button class="btn btn-primary m-t-sm" (click)="guardarFormulario(newForm)">Guardar formulario</button>
+      </div>
+    </div>
+  </div>
+
+  <wsd-render-form-edit [newForm]="newForm" *ngIf="newForm"></wsd-render-form-edit>
+
+  <div class="col-md-6">
+
+    <div class="card">
+      <div class="card-content">
+        {{ newForm.sections | json }}
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #noError>
+  <div class="card">
+    <div class="card-content">
+      <div class="alert alert-danger">Error al crear el formulario</div>
+    </div>
+  </div>
+</ng-template>

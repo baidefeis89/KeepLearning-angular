@@ -1,15 +1,78 @@
-<div class="card-deck">
-  <pre>{{ courses | json }}</pre>
-  <div class="card mb-4" *ngFor="let course of courses">
-    <a [routerLink]="['/courses/details', course._id]">
-      <img class="card-img-top" [src]="course.image" alt="Card image cap">
-    </a>
-    <div class="card-body">
-      <h5 class="card-title">{{course.title}}</h5>
-      <p class="card-text">{{course.description}}</p>
+<header class="text-center text-white d-flex bg-dark">
+    <div class="container my-auto mt-4">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h1 class="text-uppercase">
+            <strong>KeepLearning</strong>
+          </h1>
+          <h5>Aprende con nosotros</h5>
+          <hr>
+        </div>
+      </div>
     </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
+  </header>
+
+  <section class="bg-dark p-0" id="portfolio">
+
+      <div class="container-fluid p-0">
+          <div class="row no-gutters popup-gallery">
+        <div class="card mb-4 col-lg-4 col-sm-6" *ngFor="let course of courses">
+          <a class="portfolio-box" [routerLink]="['/courses/details', course._id]">
+            <img class="card-img-top" [src]="'http://localhost:8080/img/' + course.image" alt="Card image">
+            <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    {{course.title}}
+                  </div>
+                  <div class="project-name">
+                    {{course.description}}
+                  </div>
+                </div>
+              </div>
+              <div class="card-img-overlay">
+                  <h4 class="card-title text-center">{{course.title}}</h4>                
+                </div>
+          </a>
+        </div>
+      </div>
+      </div>
+  </section>
+  
+  <!-- <section class="bg-dark p-0" id="portfolio">
+    <div class="container-fluid p-0">
+      <div class="row no-gutters popup-gallery">
+        <div class="col-lg-4 col-sm-6" *ngFor="let course of courses">
+          <a class="portfolio-box" [routerLink]="['/courses/details', course._id]">
+            <img class="img-fluid" [src]="'http://localhost:8080/img/' + course.image" alt="Card image cap">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                  {{course.title}}
+                </div>
+                <div class="project-name">
+                  {{course.description}}
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
+   -->
+
+
+   <!-- <div class="card-deck">
+      <div class="card mb-4" *ngFor="let course of courses">
+        <a [routerLink]="['/courses/details', course._id]">
+          <img class="card-img-top" [src]="'http://localhost:8080/img/' + course.image" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{course.title}}</h5>
+          <p class="card-text">{{course.description}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div> -->

@@ -1,0 +1,51 @@
+<div class="row header">
+  <div class="col-md-2">
+    <figure class="profile-img">
+      <img [src]="'http://localhost:8080/img/' + message.creator.avatar" alt="profile">
+    </figure>
+  </div>
+  <div class="col-md-10">
+    <div class="font-weight-bold">
+      <h4>{{ message.subject }}</h4>
+      <h6>
+        <a href="">{{ message.creator.name + ' ' + message.creator.surname }} </a>
+      </h6>
+    </div>
+  </div>
+</div>
+<div class="body">{{ message.text }}</div>
+<div>
+  <small class="pointer text-primary" (click)="showHideNewResponse()">Responder</small>
+  <small class="pointer text-primary ml-4" *ngIf="message.responses.length > 0" (click)="showHideResponses()">Ver respuestas</small>
+  <div class="row" *ngIf="showNewResponse">
+    <textarea class="col-md-12 form-control" name="" id="" cols="30" rows="4" #response></textarea>
+    <button class="btn btn-primary mt-3" (click)="sendResponse(message._id, response)">Enviar</button>
+  </div> 
+</div>
+
+<div class="mt-2" *ngIf="showResponses">
+  <div *ngFor="let response of message.responses" class="row mt-2">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+      <div class="row header align-items-center">
+        <div class="col-md-2">
+          <figure class="profile-img-sm">
+            <img [src]="'http://localhost:8080/img/' + response.creator.avatar" alt="profile">
+          </figure>
+        </div>
+        <div class="col-md-10">
+          <div class="font-weight-bold">
+            <h6>
+              <a href="">{{ response.creator.name + ' ' + response.creator.surname }} </a>
+            </h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="body">
+        {{ response.text }}
+      </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close"
+  (click)="activeModal.dismiss()"> <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body"> 
+  <p>{{ body }}</p>
+</div>
+<div *ngIf="!info" class="modal-footer">
+  <div class="align-items-center">
+    <button type="button" class="btn btn-lg btn-success" (click)="activeModal.close(true)">Si</button>
+    <button type="button" class="btn btn-lg btn-danger" (click)="activeModal.close(false)">No</button>
+  </div>
+</div>
+<div *ngIf="info" class="modal-footer">
+  <button type="button" class="btn btn-block btn-primary" (click)="activeModal.close(true)">Aceptar</button>
+</div>

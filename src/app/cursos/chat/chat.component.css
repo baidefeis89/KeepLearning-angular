@@ -1,0 +1,32 @@
+.chat {
+    height: 500px;
+}
+
+/* .msg {
+    white-space: pre-line;
+} */
+
+input {
+    border: 1px solid rgb(241, 119, 4);
+}
+
+.input {
+    position: relative;
+    bottom: 0px;
+}
+
+.messages {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.name {
+    display: block;
+}
+
+.msg {
+    border-radius: 20px;
+    padding: 0px 10px;
+    line-height: 30px;
+    display: inline-block;
+}

@@ -1,0 +1,18 @@
+<div class="row mt-4">
+  <div class="col-2">
+      <img class="w-100" id="avatar" [src]="user.avatar" alt="">
+  </div>
+  <div class="col-9">
+      <h4>{{user.name + ' ' + user.surname}}</h4>
+      <h4>
+      <small class="text-muted">{{user.email}}</small>
+      </h4>
+      <p *ngIf="user.me">
+        <a [routerLink]="['/profile/edit']" class="btn btn-primary">Editar perfil</a>
+        <a [routerLink]="['/events/mine']" class="btn btn-primary">Ver mis cursos</a>
+      </p>
+      <p *ngIf="!user.me">
+        <a class="btn btn-primary" [routerLink]="['/events/user', user.id]">Ver cursos del usuario</a>
+      </p>
+  </div>
+</div> 

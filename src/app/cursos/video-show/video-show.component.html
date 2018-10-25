@@ -1,0 +1,64 @@
+<video controls controlsList="nodownload" oncontextmenu="return false;">
+  <source [src]="'http://localhost:8080/uploads/' + video" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<!-- <h1>{{ paragraph.title }}</h1>
+<div class="row">
+  <div class="col-md-6" *ngIf="video">
+    <video controls controlsList="nodownload" oncontextmenu="return false;">
+      <source [src]="'http://localhost:8080/uploads/' + video" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-5  align-self-end" *ngIf="paragraph">
+    <div class="container mb-4" *ngFor="let message of paragraph.messages">
+      <div class="row header">
+        <div class="col-md-2">
+          <figure class="profile-img">
+            <img [src]="'http://localhost:8080/img/' + message.creator.avatar" alt="profile">
+          </figure>
+        </div>
+        <div class="col-md-10">
+          <div class="font-weight-bold">
+            <h4>{{ message.subject }}</h4>
+            <h6>
+              <a href="">{{ message.creator.name + ' ' + message.creator.surname }} </a>
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="body">{{ message.text }}</div>
+      <div class="pointer text-primary">
+        <small>Responder</small> 
+      </div>
+
+      <div class="row mt-2">
+        <div *ngFor="let response of message.responses" class="row mt-2">
+          <div class="col-md-2"></div>
+          <div class="col-md-10">
+            <div class="row header align-items-center">
+              <div class="col-md-2">
+                <figure class="profile-img">
+                  <img [src]="'http://localhost:8080/img/' + response.creator.avatar" alt="profile">
+                </figure>
+              </div>
+              <div class="col-md-10">
+                <div class="font-weight-bold">
+                  <h6>
+                    <a href="">{{ response.creator.name + ' ' + response.creator.surname }} </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+  
+            <div class="body">
+              {{ response.text }}
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->

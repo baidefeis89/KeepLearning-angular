@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="alert alert-info" *ngIf="messages && messages.length < 1">No hay mensajes pendientes de ser respondidos</div>
+  <div *ngFor="let message of messages" class="card row mb-4">
+    <div class="card-body col-md-12 row">
+      <figure class="col-md-2 image"><img [src]="'http://localhost:8080/img/' + message.creator.avatar" alt="profile"></figure>
+      <div class="col-md-10">
+        <h5>{{message.subject}}</h5>
+        <p>
+          {{ message.creator.name + ' ' + message.creator.surname}}
+        </p>
+      </div>
+      <div class="col-md-12 text-body">
+        {{message.text}}
+      </div>
+      <div class="col-md-12 response">
+        <textarea class="form-control input" [(ngModel)]="message.response"></textarea>
+        <button class="btn btn-primary button" (click)="response(message._id, message.response)" [disabled]="!message.response"><i class="fab fa-telegram-plane fa-lg"></i><br> Responder</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="alert alert-info fixed-bottom text-center" *ngIf="send">Se ha enviado la respuesta</div>
+</div>

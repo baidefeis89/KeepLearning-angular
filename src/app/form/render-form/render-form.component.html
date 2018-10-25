@@ -1,0 +1,17 @@
+  <div class="ibox">
+  <!-- <form class="ibox" *ngFor="let section of (newForm.sections | orderQuestions); let sectionIndex = index" #Formulario="ngForm"> -->
+    <div class="ibox-content">
+      <div>
+        <div *ngFor="let question of (section.questions | orderQuestions)" class="row m-b-sm">
+          <div class="col-md-11">
+            <wsd-render-input [question]="question"></wsd-render-input>
+          </div>
+         
+        </div>
+      </div>
+      <button class="btn btn-primary" *ngIf="section.order != 0" (click)="goToPreviousSection()">Anterior</button>
+      <button class="btn btn-primary" *ngIf="section.nextSection != 'send'" [disabled]="isInvalid(sectionIndex)" (click)="goToNextSection(section.nextSection)">Siguiente</button>
+      <button class="btn btn-primary" *ngIf="section.nextSection == 'send'" [disabled]="isInvalid(sectionIndex)" (click)="sendFormResponse()">Enviar respuesta</button>
+    </div>
+  <!-- </form> -->
+  </div>

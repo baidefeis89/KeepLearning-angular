@@ -1,0 +1,20 @@
+<form class="form-controller" novalidate #courseForm="ngForm" [formGroup]="form">
+  <div class="form-group">
+  <label for="title">Titulo</label>
+  <input type="text" class="form-control" required id="title" [(ngModel)]="course.title" name="title" formControlName="title">
+</div>
+<div class="form-group">
+  <label for="description">Descripción</label>
+  <textarea name="description" id="description" [(ngModel)]="course.description" rows="5" class="form-control" required formControlName="description"></textarea>    
+</div>
+
+<div class="form-group">
+  <label for="">Imagen</label>
+  <input type="file" id="image" (change)="onFileChange($event)">
+</div>
+<input type="hidden" class="form-control" required id="_id" [(ngModel)]="course._id" name="title" formControlName="_id" readonly>
+  <div class="form-group">
+    <button class="btn btn-primary" [disabled]="courseForm.invalid" (click)="nextSection()">Siguiente</button>
+  </div>
+  <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+</form>

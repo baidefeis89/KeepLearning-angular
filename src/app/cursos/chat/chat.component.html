@@ -1,0 +1,18 @@
+<div class="chat bg-white pb-5 pt-4 chat" #chat>
+  <div class="messages" #message>
+    <div class="alert alert-info text-center" *ngIf="!socketConnected">Conectando</div>
+    <div class="alert alert-info text-center" *ngIf="socketConnected">Bienvenido a la sala de chat de {{ course.title }}</div>
+    <div class="row" *ngFor="let msg of messages; let i = index">
+      <div class="col-sm-6 col-md-6 content-messages">
+        <p *ngIf="!msg.mine" class="ml-2"><span *ngIf="i == 0 || msg.user != messages[i - 1].user" class="name">{{msg.user}}:</span><span class="bg-primary msg">{{ msg.msg }}</span></p>
+      </div>
+      <div class="col-sm-6 col-md-6 text-right content-messages">
+        <p *ngIf="msg.mine" class="mr-2"><span *ngIf="i == 0 || msg.user != messages[i - 1].user" class="name">Yo: </span><span class="bg-secondary msg">{{msg.msg}}</span></p>
+      </div>
+  </div>
+
+  </div>
+  <div class="input">
+    <input type="text" class="form-control" (keyup.enter)="sendMessage(message)" #message placeholder="Escriba aquí su mensaje...">
+  </div>
+</div>
